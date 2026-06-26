@@ -44,9 +44,8 @@ def seed_database(database_path: Path | str | None = None) -> None:
 def main() -> None:
     settings = get_settings()
     seed_database(settings.database_path)
-    print(f"Seeded ContextForge demo database at {settings.database_path}")
+    print(f"Seeded ContextForge MCP Lab demo database at {settings.database_path}")
 
 
 if __name__ == "__main__":
     main()
-

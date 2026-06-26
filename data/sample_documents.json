@@ -9,7 +9,7 @@
     "filename": "server_maintenance_log.txt",
     "title": "Local Inference Server Maintenance Log",
     "category": "Operations",
-    "summary": "A dummy operations log covering package updates, disk checks, service restarts, and follow-up monitoring actions."
+    "summary": "A fictional ContextForge MCP Lab operations log covering package updates, disk checks, service restarts, and follow-up monitoring actions."
   },
   {
     "filename": "customer_support_policy.txt",
@@ -21,13 +21,12 @@
     "filename": "research_brief_llm_evals.txt",
     "title": "Research Brief on LLM Evaluation Methods",
     "category": "Research",
-    "summary": "A short dummy research brief comparing qualitative review, automated checks, retrieval evaluation, and regression tests."
+    "summary": "A short fictional ContextForge MCP Lab research brief comparing qualitative review, automated checks, retrieval evaluation, and regression tests."
   },
   {
     "filename": "project_meeting_summary.txt",
-    "title": "AI Infrastructure Project Meeting Summary",
+    "title": "ContextForge MCP Lab Project Meeting Summary",
     "category": "Project Management",
     "summary": "Meeting notes from a fictional planning session about demo scope, database safety, and portfolio delivery milestones."
   }
 ]
-

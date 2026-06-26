@@ -5,8 +5,8 @@
     "status": "in_progress"
   },
   {
-    "title": "Draft MCP portfolio README",
-    "description": "Write a concise README that explains the MCP-style tool layer, safe local data access, seed data workflow, and the value of controlled AI infrastructure demos.",
+    "title": "Draft ContextForge MCP Lab README",
+    "description": "Write a concise README that explains the ContextForge MCP Lab tool layer, safe local data access, seed data workflow, and the value of controlled AI infrastructure demos.",
     "status": "todo"
   },
   {
@@ -15,14 +15,13 @@
     "status": "todo"
   },
   {
-    "title": "Create safe public demo plan",
-    "description": "Define a hosted portfolio demo that exposes only constrained task and document actions, uses resettable demo data, and never accepts arbitrary database queries.",
+    "title": "Create ContextForge MCP Lab public demo plan",
+    "description": "Define a hosted ContextForge MCP Lab demo that exposes only constrained task and document actions, uses resettable demo data, and never accepts arbitrary database queries.",
     "status": "todo"
   },
   {
-    "title": "Prepare GitHub project screenshots",
-    "description": "Capture terminal output for seeding, pytest results, example tool calls, and the final repository tree for use in the portfolio project page.",
+    "title": "Prepare ContextForge MCP Lab GitHub screenshots",
+    "description": "Capture terminal output for seeding, pytest results, example tool calls, and the final repository tree for use in the ContextForge MCP Lab portfolio page.",
     "status": "todo"
   }
 ]
-

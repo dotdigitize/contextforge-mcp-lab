@@ -19,8 +19,8 @@ def test_task_tools_create_list_and_delete(tmp_path):
     seed_database(db_path)
 
     created = create_task(
-        "Validate public demo reset flow",
-        "Confirm the demo reset command restores known sample data.",
+        "Validate ContextForge MCP Lab demo reset flow",
+        "Confirm the demo reset command restores known ContextForge MCP Lab sample data.",
         db_path=db_path,
     )
     assert created["id"] > 5
@@ -45,4 +45,3 @@ def test_document_tools_search_and_metadata(tmp_path):
 def test_server_rejects_unknown_tool():
     with pytest.raises(ValueError):
         call_tool("raw_sql_query", {"query": "SELECT * FROM tasks"})
-

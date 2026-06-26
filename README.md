@@ -8,7 +8,7 @@ The project implements a local MCP-style Python server backed by SQLite, structu
 
 "ContextForge" describes the core idea: turning local files, tasks, and structured records into useful AI context. "MCP Lab" signals that this is an experimental but concrete Model Context Protocol-style environment where tool access is explicit, testable, and limited.
 
-The name is intentionally specific. This is not a generic AI portfolio folder. It is a small infrastructure lab for showing how controlled context access can be designed, seeded, tested, and explained.
+The name is intentionally specific. ContextForge MCP Lab is a small infrastructure lab for showing how controlled context access can be designed, seeded, tested, and explained.
 
 ## What MCP Is
 
@@ -72,6 +72,7 @@ contextforge-mcp-lab/
 ## Installation
 
 ```bash
+cd ~/ai-portfolio/contextforge-mcp-lab
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
@@ -91,7 +92,7 @@ The default database path is `data/contextforge.db`.
 python -m src.seed_data
 ```
 
-This rebuilds the demo database with five realistic tasks and five realistic documents loaded from `sample_files/`.
+This rebuilds the ContextForge MCP Lab demo database with five realistic tasks and five realistic documents loaded from `sample_files/`.
 
 ## Run Commands
 
@@ -150,7 +151,7 @@ This project gives hiring managers and technical reviewers a clear example of AI
 
 - It connects AI tooling concepts to a real local database.
 - It shows judgment around access control.
-- It uses realistic dummy data instead of empty placeholders.
+- It uses realistic fictional data instead of empty placeholders.
 - It is reproducible from seed files.
 - It includes tests that verify both useful actions and rejected unsafe access.
 
@@ -166,4 +167,3 @@ This project gives hiring managers and technical reviewers a clear example of AI
 - Pytest testing
 - Technical documentation
 - Portfolio-ready AI infrastructure explanation
-

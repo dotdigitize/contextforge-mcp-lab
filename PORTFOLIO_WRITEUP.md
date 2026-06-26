@@ -22,12 +22,12 @@ ContextForge MCP Lab uses a layered design:
 
 ## What I Built
 
-I built a local MCP-style portfolio project with:
+I built ContextForge MCP Lab with:
 
 - A SQLite database containing `tasks` and `documents`
 - Controlled task tools: `create_task`, `list_tasks`, `search_tasks`, `complete_task`, and `delete_task`
 - Controlled document tools: `list_documents`, `search_documents`, `get_document`, and `summarize_document_metadata`
-- Seed data loaded from realistic dummy files
+- Seed data loaded from realistic fictional files
 - A command-line server entrypoint for local tool calls
 - Setup, architecture, and demo planning documentation
 - Pytest tests for the core workflow
@@ -86,4 +86,3 @@ ContextForge MCP Lab shows that I can build and explain that boundary using prac
 The next version can add a portfolio website layer that calls a hosted demo API. The public demo should use a demo-only database, strict rate limits, input validation, a reset option, and the same constrained actions used by the local tool layer.
 
 The public version should continue to avoid raw SQL, private data, and broad filesystem access.
-

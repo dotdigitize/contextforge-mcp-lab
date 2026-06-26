@@ -6,5 +6,4 @@ AI-assisted support tooling may summarize known policy documents, draft response
 
 Every automated suggestion should be traceable to a source document or a controlled tool result. If the assistant cannot find a relevant policy, it should say that the answer is not available rather than inventing a process.
 
-This dummy policy exists to demonstrate document search and retrieval in the ContextForge MCP Lab project. It contains no real customer data and should be safe to use in public screenshots.
-
+This fictional policy exists to demonstrate document search and retrieval in ContextForge MCP Lab. It contains no real customer data and should be safe to use in public screenshots.
