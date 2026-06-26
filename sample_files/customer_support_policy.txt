@@ -1,0 +1,10 @@
+Support agents should collect only the information needed to understand a customer issue. Account identifiers, private messages, credentials, and billing details must be redacted from internal examples unless a secure support system explicitly requires them.
+
+Routine questions can be answered from public documentation and approved internal summaries. When a case involves security concerns, data exports, suspected abuse, or legal language, the agent should escalate to the appropriate team instead of improvising a final answer.
+
+AI-assisted support tooling may summarize known policy documents, draft response outlines, and identify similar resolved issues. It must not directly modify customer records, issue refunds, change access settings, or query unrestricted databases without a human-approved workflow.
+
+Every automated suggestion should be traceable to a source document or a controlled tool result. If the assistant cannot find a relevant policy, it should say that the answer is not available rather than inventing a process.
+
+This dummy policy exists to demonstrate document search and retrieval in the ContextForge MCP Lab project. It contains no real customer data and should be safe to use in public screenshots.
+

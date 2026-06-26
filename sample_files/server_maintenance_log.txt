@@ -1,0 +1,10 @@
+Maintenance window began at 09:00 UTC for the local inference and demo services. The operator confirmed that the host was running Ubuntu 22.04, checked available disk space, and verified that the Python virtual environment used by the demo was isolated from system packages.
+
+Package updates were reviewed before installation. Security patches were applied to the base system, while application dependencies remained pinned through the project requirements file. The SQLite demo database was backed up before reseeding so the reset procedure could be verified without losing known sample data.
+
+The local service process was restarted after dependency verification. Health checks confirmed that the MCP-style command entrypoint could list tasks, search documents, and reject unknown tool names. The maintenance test intentionally attempted a raw SQL-style tool name and confirmed that no such tool existed.
+
+Log review found no personal data in the demo files or database. The sample documents used fictional operational notes, policy text, and research summaries. Follow-up work includes adding a small status page for the portfolio demo and capturing screenshots after the next test run.
+
+The maintenance window ended at 09:42 UTC. No production systems were involved, and all changes were limited to the local portfolio environment.
+

@@ -1,0 +1,10 @@
+The project meeting covered the first public version of ContextForge MCP Lab. The team agreed that the demo should emphasize safe local data access instead of trying to look like a production SaaS product.
+
+The initial scope includes a SQLite database with tasks and documents, seed data loaded from JSON and text files, a Python tool layer, and pytest coverage for database creation, validation, search, and rejected tool calls. A later web demo can sit on top of the same controlled actions.
+
+The group decided that sample data should be realistic enough for reviewers to understand the workflow. The files will include marketing notes, server maintenance notes, support policy text, LLM evaluation research, and a meeting summary. None of the content should refer to real customers, private systems, or credentials.
+
+Open decisions include whether the future public demo should reset data on a schedule or expose a manual reset button. The preferred design is a demo-only database with rate limits, short text inputs, no authentication promises, and no raw SQL endpoint.
+
+The next milestone is a complete GitHub repository with setup instructions, architecture notes, test output, and screenshots ready to capture after the first successful run.
+

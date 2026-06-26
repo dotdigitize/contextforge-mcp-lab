@@ -1,0 +1,10 @@
+LLM evaluation for infrastructure demos should combine qualitative review with repeatable checks. A short manual review can show whether the assistant behavior feels useful, but automated tests are needed to catch regressions when tool schemas, prompts, or data models change.
+
+For retrieval-augmented workflows, common metrics include context precision, context recall, answer relevance, faithfulness, and latency. These metrics are useful when the system has a known document set and a clear expectation for which source should answer each query.
+
+Tool-using agents need a different layer of evaluation. The system should be tested for allowed actions, rejected actions, malformed inputs, missing records, and state changes such as completing or deleting a task. The absence of a raw SQL tool is itself an important behavior to verify.
+
+Human review should focus on whether the tool boundary is understandable. If a reviewer can quickly see which actions are allowed, which data is returned, and how test coverage protects those choices, the project communicates stronger engineering judgment.
+
+Future research could add golden test cases for document search quality, synthetic abuse attempts, and a comparison between direct database access and constrained tool access.
+

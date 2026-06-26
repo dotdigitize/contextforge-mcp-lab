@@ -1,0 +1,28 @@
+[
+  {
+    "title": "Review RAG evaluation metrics",
+    "description": "Compare faithfulness, answer relevance, context precision, and latency metrics for the local retrieval demo. Capture which metrics are easiest to explain in a portfolio walkthrough.",
+    "status": "in_progress"
+  },
+  {
+    "title": "Draft MCP portfolio README",
+    "description": "Write a concise README that explains the MCP-style tool layer, safe local data access, seed data workflow, and the value of controlled AI infrastructure demos.",
+    "status": "todo"
+  },
+  {
+    "title": "Document Ollama server setup",
+    "description": "Prepare Ubuntu notes for running a local model service, including virtual environment setup, process checks, and troubleshooting commands for a private demo machine.",
+    "status": "todo"
+  },
+  {
+    "title": "Create safe public demo plan",
+    "description": "Define a hosted portfolio demo that exposes only constrained task and document actions, uses resettable demo data, and never accepts arbitrary database queries.",
+    "status": "todo"
+  },
+  {
+    "title": "Prepare GitHub project screenshots",
+    "description": "Capture terminal output for seeding, pytest results, example tool calls, and the final repository tree for use in the portfolio project page.",
+    "status": "todo"
+  }
+]
+

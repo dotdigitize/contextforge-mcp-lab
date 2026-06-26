@@ -1,0 +1,10 @@
+The Q3 developer tools campaign will focus on teams that want useful AI assistance without handing every internal system to an unmanaged agent. The core message is that local context, narrow permissions, and observable tool calls make AI features easier to review and easier to trust.
+
+The primary demo story follows a platform engineer who needs to expose project tasks and reference documents to an AI assistant. Instead of giving the assistant raw database credentials, the engineer publishes a small set of tool actions that match real workflows: list work, search notes, open a known document, and mark a task complete.
+
+Content should avoid vague claims about general productivity. The better angle is operational confidence. We can show before-and-after examples where uncontrolled access creates review risk, while a constrained tool layer produces predictable behavior that can be tested.
+
+The campaign assets should include a repository walkthrough, a short terminal recording, and a portfolio page section that explains the architecture in plain language. Screenshots should show seeded data, passing tests, and example tool calls rather than abstract diagrams alone.
+
+Success metrics for the fictional campaign include demo completion rate, README engagement, GitHub stars from target reviewers, and direct recruiter feedback mentioning MCP, SQLite, testing, or controlled access design.
+
