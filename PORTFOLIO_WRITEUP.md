@@ -1,40 +1,40 @@
-# ContextForge MCP Lab
+# ContextForge MCP Lab Case Study
 
 ## Research Question
 
-How can an AI system safely interact with structured local data without exposing raw database access?
+How can an AI-facing system work with structured local data without exposing raw database access?
 
 ## Problem
 
-AI assistants are most useful when they can access project context, tasks, documents, and operational notes. The risk is that direct access to databases or files can expose more information and more capability than the assistant needs.
+AI assistants are most useful when they can work with project context, task records, documents, and operational notes. The risk is that direct access to databases or files can expose more information and more capability than the workflow requires.
 
-This project explores a safer pattern: expose a narrow set of controlled tools that map to real workflows and keep raw database access private.
+ContextForge MCP Lab explores a narrower pattern: expose controlled tools that map to specific actions, keep database operations behind a service boundary, and make the behavior easy to seed, test, and inspect.
 
 ## System Design
 
 ContextForge MCP Lab uses a layered design:
 
-- A Python MCP-style server dispatches named tool calls.
+- A local MCP-style dispatcher accepts named tool calls.
 - A tool layer exposes task and document actions.
 - A database layer owns all SQLite queries.
 - Seed data comes from JSON manifests and sample text files.
 - Tests verify database behavior, tool behavior, validation, and rejected unsafe access.
 
-## What I Built
+## Implementation
 
-I built ContextForge MCP Lab with:
+The project includes:
 
 - A SQLite database containing `tasks` and `documents`
 - Controlled task tools: `create_task`, `list_tasks`, `search_tasks`, `complete_task`, and `delete_task`
 - Controlled document tools: `list_documents`, `search_documents`, `get_document`, and `summarize_document_metadata`
-- Seed data loaded from realistic fictional files
-- A command-line server entrypoint for local tool calls
+- Seed data loaded from fictional sample files
+- A command-line entrypoint for local tool calls
 - Setup, architecture, and demo planning documentation
 - Pytest tests for the core workflow
 
 ## Sample Data Design
 
-The sample data is intentionally believable. The task records cover RAG evaluation, MCP documentation, Ollama setup, public demo planning, and GitHub screenshots.
+The sample records are designed to be realistic enough for local testing without using private or production data. Task records cover RAG evaluation, MCP documentation, local model setup, demo planning, and repository maintenance.
 
 The document records come from five text files:
 
@@ -46,7 +46,7 @@ The document records come from five text files:
 
 The content is fictional and contains no real personal, customer, credential, or production data.
 
-## How I Tested It
+## Testing
 
 The test suite verifies that:
 
@@ -59,30 +59,40 @@ The test suite verifies that:
 
 ## Results
 
-The result is a reproducible local AI infrastructure demo. A reviewer can clone the repository, create a virtual environment, seed the database, run tests, and execute example tool calls.
+The result is a reproducible local data access service with a clear safety boundary. A developer can seed the database, run tests, and execute task and document actions through a constrained interface.
 
-The project demonstrates a concrete safety boundary: the AI-facing layer can perform useful actions, but it cannot run arbitrary SQL.
+The AI-facing layer can perform useful operations, but it cannot run arbitrary SQL or invent new database permissions.
 
-## Skills Demonstrated
+## Technical Rationale
 
-- Python engineering
+The repository focuses on a few practical design choices:
+
+- Keep the public callable surface small and named.
+- Keep SQL inside the persistence layer.
+- Use parameterized queries for database operations.
+- Seed demo data from versioned files.
+- Test both successful workflows and rejected access patterns.
+
+## Engineering Notes
+
+- Python application structure
 - SQLite schema design
 - Controlled tool interface design
 - MCP-style architecture
 - Input validation
 - Error handling
-- Test-driven verification
 - Seed data management
-- Technical writing for portfolio presentation
+- Pytest verification
+- Technical documentation
 
-## How This Connects to AI Infrastructure Roles
+## Relevance
 
-AI infrastructure roles often require connecting models to tools, documents, databases, queues, and internal systems. The hard part is not only making the connection work. It is designing the boundary so the model gets useful context without unsafe authority.
+AI systems often need access to tools, documents, databases, queues, and internal applications. The connection is only part of the problem; the boundary around that connection determines what the system can read, modify, and expose.
 
-ContextForge MCP Lab shows that I can build and explain that boundary using practical tools: Python, SQLite, structured files, tests, and clear documentation.
+ContextForge MCP Lab demonstrates one local version of that boundary using Python, SQLite, structured files, tests, and explicit tool functions.
 
 ## Future Demo Plan
 
-The next version can add a portfolio website layer that calls a hosted demo API. The public demo should use a demo-only database, strict rate limits, input validation, a reset option, and the same constrained actions used by the local tool layer.
+A future hosted version could add a small web API in front of the same constrained actions. That version should use a demo-only database, strict rate limits, input validation, reset behavior, and the same no-raw-SQL rule used by the local tool layer.
 
-The public version should continue to avoid raw SQL, private data, and broad filesystem access.
+The public version should continue to avoid private data, personal data, credentials, and broad filesystem access.

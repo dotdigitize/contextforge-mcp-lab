@@ -24,7 +24,7 @@ The project targets Python 3.10 or newer.
 Run project commands from the final repository directory:
 
 ```bash
-cd ~/ai-portfolio/contextforge-mcp-lab
+cd contextforge-mcp-lab
 ```
 
 ## Python Virtual Environment Setup
@@ -32,7 +32,7 @@ cd ~/ai-portfolio/contextforge-mcp-lab
 Create and activate a local virtual environment:
 
 ```bash
-cd ~/ai-portfolio/contextforge-mcp-lab
+cd contextforge-mcp-lab
 python3 -m venv .venv
 source .venv/bin/activate
 ```
@@ -44,7 +44,7 @@ Your shell prompt should show that `.venv` is active.
 Install test dependencies:
 
 ```bash
-cd ~/ai-portfolio/contextforge-mcp-lab
+cd contextforge-mcp-lab
 pip install -r requirements.txt
 ```
 
@@ -55,14 +55,14 @@ The project uses only Python standard library modules at runtime. `pytest` is re
 The database path is controlled by `CONTEXTFORGE_DB_PATH`. Copy the example environment file if you want to customize it:
 
 ```bash
-cd ~/ai-portfolio/contextforge-mcp-lab
+cd contextforge-mcp-lab
 cp .env.example .env
 ```
 
 Seed the demo database:
 
 ```bash
-cd ~/ai-portfolio/contextforge-mcp-lab
+cd contextforge-mcp-lab
 python -m src.seed_data
 ```
 
@@ -71,7 +71,7 @@ This creates `data/contextforge.db` by default and loads realistic fictional tas
 ## How to Run Tests
 
 ```bash
-cd ~/ai-portfolio/contextforge-mcp-lab
+cd contextforge-mcp-lab
 python -m pytest
 ```
 

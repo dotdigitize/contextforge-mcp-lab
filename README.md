@@ -1,41 +1,140 @@
 # ContextForge MCP Lab
 
-ContextForge MCP Lab is a professional AI infrastructure portfolio project that shows how an AI system can interact with local structured data through controlled tools instead of unrestricted database access.
+## Overview
 
-The project implements a local MCP-style Python server backed by SQLite, structured JSON seed data, and realistic sample text files. It is designed to demonstrate safe tool boundaries, reproducible demo data, and practical testing for AI-agent infrastructure.
+ContextForge MCP Lab is a local MCP-style data access server for working with task records and seeded documents through controlled tool functions. It uses Python, SQLite, JSON seed manifests, and sample text files to model how an AI-facing tool layer can expose useful application actions without exposing unrestricted database access.
 
-## Why the Name ContextForge MCP Lab Matters
-
-"ContextForge" describes the core idea: turning local files, tasks, and structured records into useful AI context. "MCP Lab" signals that this is an experimental but concrete Model Context Protocol-style environment where tool access is explicit, testable, and limited.
-
-The name is intentionally specific. ContextForge MCP Lab is a small infrastructure lab for showing how controlled context access can be designed, seeded, tested, and explained.
-
-## What MCP Is
-
-MCP stands for Model Context Protocol. It is a pattern for connecting AI systems to external context and tools through defined interfaces. Instead of giving a model broad access to a machine, database, or application, an MCP server exposes specific actions the AI system is allowed to request.
-
-In this project, the MCP-style tools are Python functions such as `list_tasks`, `search_documents`, and `complete_task`. They use safe database functions internally and do not expose raw SQL.
-
-## Why This Project Matters
-
-AI agents become risky when they are connected directly to private systems without clear boundaries. A controlled tool layer makes it easier to decide what an agent can do, validate inputs, test behavior, audit outputs, and build public demos without exposing sensitive access.
-
-ContextForge MCP Lab demonstrates that pattern with a small but realistic local dataset.
+The project is intentionally small: it provides a reproducible local database, a command-line tool dispatcher, and tests around the task and document workflows.
 
 ## Features
 
-- Python MCP-style tool server
+- MCP-style named tool interface
 - SQLite database with `tasks` and `documents` tables
-- Realistic seeded task records
-- Realistic sample document files
-- JSON seed manifests for repeatable demo rebuilds
-- Safe controlled functions for all data access
-- No raw SQL tool and no arbitrary query endpoint
+- JSON-based seed data for repeatable local setup
+- Seeded sample documents loaded from text files
+- Controlled task and document functions
+- Input validation for IDs, statuses, search terms, titles, and descriptions
+- Parameterized SQLite queries
 - Configurable database path through `.env`
-- Pytest coverage for database setup, tools, validation, and rejected raw-access behavior
-- Documentation for setup, architecture, portfolio value, and future demo hosting
+- Pytest coverage for database setup, seed loading, tool behavior, validation, and unknown tool rejection
 
-## Folder Structure
+## Architecture
+
+ContextForge MCP Lab is organized into a small set of layers:
+
+- MCP-style tool interface: `src/server.py` dispatches named JSON-compatible tool calls, and `src/tools.py` exposes the registered task and document functions.
+- Python service layer: tool functions validate the callable surface and delegate workflow-specific behavior to the database module.
+- SQLite persistence layer: `src/database.py` owns schema creation, reads, writes, updates, deletes, and search queries.
+- Seeded sample files: `data/*.json` defines seed metadata, while `sample_files/*.txt` provides document bodies.
+- Tests: `tests/` verifies database initialization, seed behavior, tool calls, validation, and rejection of unregistered tools.
+
+## Tools
+
+Task functions:
+
+- `create_task(title, description, status="todo")`
+- `list_tasks(status=None)`
+- `search_tasks(query)`
+- `complete_task(task_id)`
+- `delete_task(task_id)`
+
+Document functions:
+
+- `list_documents()`
+- `search_documents(query)`
+- `get_document(document_id)`
+- `summarize_document_metadata()`
+
+## Data Model
+
+The `tasks` table stores local task records:
+
+- `id`: auto-incrementing integer primary key
+- `title`: required task title
+- `description`: required task description
+- `status`: one of `todo`, `in_progress`, or `done`
+- `created_at`: UTC timestamp
+- `completed_at`: UTC timestamp set when a task is completed
+
+The `documents` table stores seeded document metadata and content:
+
+- `id`: auto-incrementing integer primary key
+- `filename`: unique source filename
+- `title`: document title
+- `category`: document category
+- `summary`: short document summary
+- `content`: full text loaded from `sample_files/`
+- `created_at`: UTC timestamp
+
+## Installation
+
+```bash
+cd contextforge-mcp-lab
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+Optional environment setup:
+
+```bash
+cp .env.example .env
+```
+
+The default database path is `data/contextforge.db`.
+
+## Seeding the Demo Database
+
+```bash
+python -m src.seed_data
+```
+
+This rebuilds the demo database with five task records and five documents loaded from `sample_files/`.
+
+## Running Tests
+
+```bash
+python -m pytest
+```
+
+## Example Usage
+
+Call tools through the local command dispatcher:
+
+```bash
+python -m src.server list_tasks
+python -m src.server search_documents --args '{"query": "maintenance"}'
+python -m src.server create_task --args '{"title": "Capture demo screenshot", "description": "Save terminal output showing seeded data and passing tests."}'
+python -m src.server complete_task --args '{"task_id": 1}'
+```
+
+The same functions can be called directly from Python:
+
+```python
+from src.server import call_tool
+
+tasks = call_tool("list_tasks")
+matches = call_tool("search_documents", {"query": "policy"})
+task = call_tool(
+    "create_task",
+    {
+        "title": "Review document metadata",
+        "description": "Check seeded document categories and summaries.",
+    },
+)
+completed = call_tool("complete_task", {"task_id": task["id"]})
+```
+
+## Security Notes
+
+- There is no raw SQL tool.
+- Callers can only use registered task and document functions.
+- SQLite access uses parameterized queries.
+- Input validation is applied before database operations.
+- The repository contains demo data only.
+- The sample files are fictional and do not contain personal data.
+
+## Project Structure
 
 ```text
 contextforge-mcp-lab/
@@ -66,104 +165,12 @@ contextforge-mcp-lab/
   data/
     sample_tasks.json
     sample_documents.json
-  screenshots/
 ```
 
-## Installation
+## Roadmap
 
-```bash
-cd ~/ai-portfolio/contextforge-mcp-lab
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
-
-Optional environment setup:
-
-```bash
-cp .env.example .env
-```
-
-The default database path is `data/contextforge.db`.
-
-## Seed Database Command
-
-```bash
-python -m src.seed_data
-```
-
-This rebuilds the ContextForge MCP Lab demo database with five realistic tasks and five realistic documents loaded from `sample_files/`.
-
-## Run Commands
-
-List tasks:
-
-```bash
-python -m src.server list_tasks
-```
-
-Search documents:
-
-```bash
-python -m src.server search_documents --args '{"query": "maintenance"}'
-```
-
-Create a task:
-
-```bash
-python -m src.server create_task --args '{"title": "Capture demo screenshot", "description": "Save terminal output showing seeded data and passing tests."}'
-```
-
-Complete a task:
-
-```bash
-python -m src.server complete_task --args '{"task_id": 1}'
-```
-
-## Test Commands
-
-```bash
-python -m pytest
-```
-
-## Example Tool Calls
-
-Task tools:
-
-- `create_task(title, description, status="todo")`
-- `list_tasks(status=None)`
-- `search_tasks(query)`
-- `complete_task(task_id)`
-- `delete_task(task_id)`
-
-Document tools:
-
-- `list_documents()`
-- `search_documents(query)`
-- `get_document(document_id)`
-- `summarize_document_metadata()`
-
-There is no `raw_sql_query` tool. All data access goes through constrained Python functions using validation and parameterized SQLite queries.
-
-## Portfolio Value
-
-This project gives hiring managers and technical reviewers a clear example of AI infrastructure work:
-
-- It connects AI tooling concepts to a real local database.
-- It shows judgment around access control.
-- It uses realistic fictional data instead of empty placeholders.
-- It is reproducible from seed files.
-- It includes tests that verify both useful actions and rejected unsafe access.
-
-## Skills Demonstrated
-
-- Python application structure
-- SQLite schema design
-- Safe data access patterns
-- MCP-style tool design
-- Input validation and error handling
-- Seed data workflows
-- Local environment setup
-- Pytest testing
-- Technical documentation
-- Portfolio-ready AI infrastructure explanation
+- Real MCP client integration
+- FastAPI demo layer
+- Rate limiting for hosted demo endpoints
+- GitHub Actions test workflow
+- Containerized deployment

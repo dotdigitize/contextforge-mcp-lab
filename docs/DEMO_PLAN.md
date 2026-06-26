@@ -1,6 +1,6 @@
 # Demo Plan
 
-ContextForge MCP Lab can later become a safe public demo on a portfolio website. The public version should preserve the same principle as the local project: useful AI-facing actions without unrestricted database access.
+ContextForge MCP Lab can later support a safe hosted demo. The public version should preserve the same principle as the local project: useful AI-facing actions without unrestricted database access.
 
 ## Public Demo Goal
 
@@ -37,7 +37,7 @@ Provide a reset demo data option. The demo should be easy to restore to known re
 
 ## Suggested Flow
 
-1. Visitor opens the portfolio demo page.
+1. Visitor opens the demo page.
 2. The page lists seeded tasks and documents.
 3. Visitor creates a small demo task.
 4. Visitor searches tasks for a keyword such as `RAG`.
@@ -50,5 +50,4 @@ Provide a reset demo data option. The demo should be easy to restore to known re
 
 A simple public implementation could use a small web API in front of a resettable SQLite database. A scheduled job or manual admin action could restore seed data. The same Python validation rules used in the local project should be reused or mirrored.
 
-Screenshots for the portfolio page should show the local terminal workflow first: seed database, run tests, list tasks, search documents, and reject an unknown raw SQL-style tool.
-
+Screenshots or recordings should show the local terminal workflow first: seed database, run tests, list tasks, search documents, and reject an unknown raw SQL-style tool.

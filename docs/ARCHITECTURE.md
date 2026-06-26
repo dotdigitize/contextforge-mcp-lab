@@ -1,10 +1,10 @@
 # Architecture
 
-ContextForge MCP Lab is organized as a layered local AI infrastructure demo. Each layer has a clear responsibility and keeps the AI-facing surface narrow.
+ContextForge MCP Lab is organized as a layered local data access service. Each layer has a clear responsibility and keeps the AI-facing surface narrow.
 
-## Portfolio Website Demo Layer
+## Demo Interface Layer
 
-A future portfolio website can provide a simple interface for visitors to try controlled demo actions. This layer should show tasks, document search results, and selected document content.
+A future web interface can provide a simple way to try controlled demo actions. This layer should show tasks, document search results, and selected document content.
 
 The website should not connect directly to SQLite. It should call a small API or server layer that enforces the same constraints as the local tool functions.
 
@@ -55,4 +55,3 @@ Raw database access should never be public because it gives callers more power t
 For AI systems, raw access also makes behavior harder to evaluate. A controlled tool such as `search_documents` has predictable inputs, outputs, and tests. A raw SQL prompt has an unbounded action space.
 
 The safer pattern is to design narrow tools that match user workflows, validate inputs, and return only the data needed for the task.
-
